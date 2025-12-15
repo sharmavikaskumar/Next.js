@@ -2,7 +2,7 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white flex items-center justify-center px-6">
+    <div className="min-h-screenr from-black via-gray-900 to-black text-white flex items-center justify-center px-6">
       
       {/* About Card */}
       <div className="max-w-2xl w-full bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-10 shadow-xl">

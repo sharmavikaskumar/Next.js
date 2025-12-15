@@ -2,7 +2,7 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black text-white px-6">
+    <div className="min-h-screen flex items-center justify-center  from-black via-gray-900 to-black text-white px-6">
       
       {/* Glass Card */}
       <div className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl shadow-xl p-10 max-w-xl w-full text-center">
