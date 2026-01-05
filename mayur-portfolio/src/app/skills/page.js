@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import {
   FaHtml5,
   FaCss3Alt,
@@ -20,21 +21,28 @@ import {
 export default function Skills() {
   return (
     <section className="min-h-screen bg-black py-28 text-white">
-      <div className="max-w-6xl mx-auto px-10">
-
+      <motion.div
+        className="max-w-6xl mx-auto px-10"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={container}
+      >
         {/* Heading */}
-        <div className="mb-20 text-center">
+        <motion.div className="mb-20 text-center" variants={item}>
           <p className="text-sm tracking-widest text-gray-400 mb-4">
             SKILLS
           </p>
           <h2 className="text-4xl md:text-5xl font-bold">
             Technologies I Use
           </h2>
-        </div>
+        </motion.div>
 
         {/* Skill Groups */}
-        <div className="grid md:grid-cols-2 gap-16">
-
+        <motion.div
+          className="grid md:grid-cols-2 gap-16"
+          variants={container}
+        >
           <SkillGroup title="Frontend">
             <Skill icon={<FaHtml5 />} name="HTML" />
             <Skill icon={<FaCss3Alt />} name="CSS" />
@@ -58,33 +66,71 @@ export default function Skills() {
             <Skill icon={<FaGithub />} name="GitHub" />
             <Skill icon={<SiPostman />} name="Postman" />
           </SkillGroup>
-
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
 
-/* Group */
+/* 🔹 Skill Group */
 function SkillGroup({ title, children }) {
   return (
-    <div>
+    <motion.div variants={item}>
       <h3 className="text-2xl font-semibold mb-6 border-b border-gray-700 pb-3">
         {title}
       </h3>
       <div className="flex flex-wrap gap-5">
         {children}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
-/* Skill pill */
+/* 🔹 Skill Pill */
 function Skill({ icon, name }) {
   return (
-    <div className="flex items-center gap-3 px-5 py-3 bg-[#111] rounded-full text-sm hover:bg-[#1a1a1a] transition">
-      <span className="text-xl text-white">{icon}</span>
+    <motion.div
+      variants={pill}
+      whileHover={{ scale: 1.08 }}
+      transition={{ type: "spring", stiffness: 300 }}
+      className="flex items-center gap-3 px-5 py-3 bg-[#111] rounded-full text-sm hover:bg-[#1a1a1a] transition cursor-pointer"
+    >
+      <span className="text-xl">{icon}</span>
       <span>{name}</span>
-    </div>
+    </motion.div>
   );
 }
+
+/* 🔹 Animations */
+const container = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
+const pill = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut",
+    },
+  },
+};
