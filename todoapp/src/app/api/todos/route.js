@@ -1,4 +1,4 @@
-import {db} from '@/app/lib/db.js';
+import db from '@/app/lib/db.js';
 import { NextResponse } from 'next/server';
 
 export async function GET(){
@@ -26,4 +26,3 @@ export async function PUT(req){
     await db.query("UPDATE todos SET title=?,completed=? WHERE id=?",[title,completed,id])
 
 }
-
